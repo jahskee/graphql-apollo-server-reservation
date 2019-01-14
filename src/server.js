@@ -2,9 +2,18 @@ const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const merge = require("lodash/merge");
 const { mergeTypes } = require("merge-graphql-schemas");
+const mongoose = require('mongoose');
 const fs = require('fs');
 const https = require('https');
 const http = require('http');
+
+
+/* connect to mlab mongodb database */
+mongoose.connect('mongodb://hilton:hilton123@ds155614.mlab.com:55614/hiltondb');
+mongoose.connection.once('open',() => {
+    console.log(`connected to database`);
+});
+
 
 /* imported schemas and resolvers */
 const bookSchema = require('./graphql/book/schema');
