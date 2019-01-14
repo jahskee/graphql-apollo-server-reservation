@@ -9,22 +9,19 @@ const http = require('http');
 
 
 /* connect to mlab mongodb database */
-mongoose.connect('mongodb://hilton:hilton123@ds155614.mlab.com:55614/hiltondb');
+mongoose.connect('mongodb://hilton:hilton123@ds155614.mlab.com:55614/hiltondb', {useNewUrlParser: true});
 mongoose.connection.once('open',() => {
     console.log(`connected to database`);
 });
 
-
 /* imported schemas and resolvers */
-const bookSchema = require('./graphql/book/schema');
-const bookResolvers = require('./graphql/book/resolvers');
-const authorSchema = require('./graphql/author/schema');
-const authorResolvers = require('./graphql/author/resolvers');
+const book = require('./graphql/book');
+const author = require('./graphql/author');
 
 
 /* merge schema and resolver files */
-const typeDefs = mergeTypes([bookSchema, authorSchema]);
-const resolvers = merge(bookResolvers, authorResolvers);
+const typeDefs = mergeTypes([book.schema, author.schema]);
+const resolvers = merge(book.resolvers, author.resolvers);
 
 const apollo = new ApolloServer({ typeDefs, resolvers })
 
