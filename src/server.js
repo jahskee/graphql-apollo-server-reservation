@@ -7,7 +7,6 @@ const fs = require('fs');
 const https = require('https');
 const http = require('http');
 
-
 /* connect to mlab mongodb database */
 mongoose.connect('mongodb://hilton:hilton123@ds155614.mlab.com:55614/hiltondb', {useNewUrlParser: true});
 mongoose.connection.once('open',() => {
@@ -33,8 +32,6 @@ const configurations = {
 
 const environment = process.env.NODE_ENV || 'production'
 const config = configurations[environment]
-
-
 
 const app = express()
 apollo.applyMiddleware({ app })

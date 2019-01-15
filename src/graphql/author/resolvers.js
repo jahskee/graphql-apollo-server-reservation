@@ -1,12 +1,9 @@
 
-const authors = [
-    { name: 'Jaizon Lubaton', age: 40 },
-    { name: 'Shenette Morales', age: 25 },
-];
+const Author = require('../../databases/mlab/collection1/author');
 
 const authorResolver = {
     Query: {
-      authors: () => authors,
+      authors: () => Author.find({}),
     },
 }
 
