@@ -1,2 +1,2 @@
-export MONGODB_CONNECTION = mongodb://hilton:hilton123@ds155614.mlab.com:55614/hiltondb
+export MONGODB_CONNECTION="mongodb://hilton:hilton123@ds155614.mlab.com:55614/hiltondb"
 export NODE_ENV="development"
