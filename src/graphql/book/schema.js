@@ -15,6 +15,8 @@ const schema = gql`
 
   type Mutation {
     addBook(name: String!, genre: String!, authorId: ID!): Book
+    updateBook(id: ID!, name: String!, genre: String!, authorId: ID!): Book
+    deleteBook(id: ID!): Book
   }
 `;
 

@@ -10,17 +10,19 @@ const resolvers = {
     books: () => Book.find({}),
   },
   Mutation: {
-      addBook: (parent, args, context, info) => {
-        let book = new Book({
-            name: args.name,
-            genre: args.genre,
-            authorId: args.authorId,
-        })
+    addBook: (parent, args, context, info) => {
+      let author = new Author(args);
+      return book.save();
+    },
 
-        return book.save();
+    updateBook: (parent, args, context, info) => {
+      return Book.findOneAndUpdate({_id: args.id}, args);
+    },
 
-      },
-  }
+    deleteBook: (parent, args, context, info) => {      
+      return Book.findOneAndRemove({ _id: args.id});
+    },
+  },
 }
 
 module.exports = resolvers;
