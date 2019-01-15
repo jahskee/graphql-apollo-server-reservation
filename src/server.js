@@ -7,8 +7,10 @@ const fs = require('fs');
 const https = require('https');
 const http = require('http');
 
+
 /* connect to mlab mongodb database */
-mongoose.connect('mongodb://hilton:hilton123@ds155614.mlab.com:55614/hiltondb', {useNewUrlParser: true});
+const mongodb_connection = process.env.MONGODB_CONNECTION;
+mongoose.connect(mongodb_connection, {useNewUrlParser: true});
 mongoose.connection.once('open',() => {
     console.log(`connected to database`);
 });
