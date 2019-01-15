@@ -70,3 +70,10 @@ mutation {
     genre
   },
 }
+
+
+3. Queries after Mutation
+
+{
+  authors{ id, name, books { id, name, genre } }
+}
