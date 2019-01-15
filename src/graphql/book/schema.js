@@ -1,6 +1,6 @@
 const { gql } = require('apollo-server-express');
 
-const bookSchema = gql`
+const schema = gql`
   type Book {
     id: ID
     name: String
@@ -12,6 +12,10 @@ const bookSchema = gql`
     book(id: ID): Book
     books: [Book]
   }
+
+  type Mutation {
+    addBook(name: String!, genre: String!, authorId: ID!): Book
+  }
 `;
 
-module.exports = bookSchema;
+module.exports = schema;
