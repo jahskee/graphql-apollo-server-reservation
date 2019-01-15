@@ -11,20 +11,17 @@ const resolvers = {
   },
   Mutation: {
     addAuthor: (parent, args, context, info) => {
-      let author = new Author({
-        name: args.name,
-        age: args.age,
-      });
+      let author = new Author(args);      
       return author.save();
     },
 
     updateAuthor: (parent, args, context, info) => {
-      const { id, name, age } = args;
-      return Author.findOneAndUpdate({ id }, { name, age });
+      
+      return Author.findOneAndUpdate({ id: args.id }, args);
     },
 
-    deleteAuthor: (parent, args, context, info) => {
-      return Author.findOneAndUpdate({ id }, { name });
+    deleteAuthor: () => {
+      return Author.findOneAndRemove({ id: args.id });
     },
   },
 };
