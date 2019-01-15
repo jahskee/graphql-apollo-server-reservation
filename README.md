@@ -2,7 +2,7 @@
 
 ## 1. Prepare Server Start
 
-    As security compliance, OS Level environment variables must be set before starting the server.
+    OS Level environment variables must be set before starting the server.
     These are sensitive information that are excluded from source code
 
     MONGODB_CONNECTION, NODE_ENV

@@ -8,7 +8,7 @@ const https = require('https');
 const http = require('http');
 
 
-/* connect to mlab mongodb database */
+/* connect to mongodb database */
 const mongodb_connection = process.env.MONGODB_CONNECTION;
 mongoose.connect(mongodb_connection, {useNewUrlParser: true});
 mongoose.connection.once('open',() => {
