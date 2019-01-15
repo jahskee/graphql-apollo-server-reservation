@@ -36,14 +36,14 @@
 2. Mutation
 
 mutation {
-  addAuthor(name: "John Shaw", age: 34) {
+  saveAuthor(name: "John Shaw", age: 34) {
     name
     age
   }
 }
 
 mutation {
-  addAuthor(name: "Brenda Lamb", age: 42) {
+  saveAuthor(name: "Brenda Lamb", age: 42) {
     name
     age
   }
@@ -76,4 +76,11 @@ mutation {
 
 {
   authors{ id, name, books { id, name, genre } }
+}
+
+
+mutation { 
+	updateAuthor(id:"5c39a0e8f0912c6f18a58701", name:"Jane Morales", age: 32) {
+    id, name,age
+  }
 }

@@ -17,6 +17,15 @@ const resolvers = {
       });
       return author.save();
     },
+
+    updateAuthor: (parent, args, context, info) => {
+      const { id, name, age } = args;
+      return Author.findOneAndUpdate({ id }, { name, age });
+    },
+
+    deleteAuthor: (parent, args, context, info) => {
+      return Author.findOneAndUpdate({ id }, { name });
+    },
   },
 };
 
