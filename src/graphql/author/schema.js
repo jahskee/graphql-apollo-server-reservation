@@ -8,8 +8,9 @@ const authorSchema = gql`
   }
 
   type Query {
+    author(id: ID): Author
     authors: [Author]
   }
-`
+`;
 
 module.exports = authorSchema;

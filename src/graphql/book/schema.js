@@ -8,8 +8,9 @@ const bookSchema = gql`
   }
 
   type Query {
+    book(id: ID): Book
     books: [Book]
   }
-`
+`;
 
 module.exports = bookSchema;

@@ -36,6 +36,7 @@ const config = configurations[environment]
 const app = express()
 apollo.applyMiddleware({ app })
 
+// to run local plese do: export NODE_ENV='development'
 var server
 if (config.ssl) {
   server = https.createServer(
