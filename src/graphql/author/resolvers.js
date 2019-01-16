@@ -11,15 +11,17 @@ const resolvers = {
   },
   Mutation: {
     saveAuthor: (parent, args, context, info) => {
-      if (args.id === undefined && args.id === "") {
-        // add operation
-        console.log("ADDING")
-        let author = new Author({ args });
-        return author.save();
-      } else {
-        // update operation
-        console.log("UPDATING")
-        return Author.update({ _id: args.id }, args);
+      if (args.id === undefined) {
+        let author = new Author(args);
+        return author.save().then(record => {
+          console.log(`New record added id : ${record.id} `);
+          return record;
+        });
+      } else {      
+        return Author.findOneAndUpdate({ _id: args.id }, args).then( record => {
+          console.log(`Update made on record with id : ${record.id} `);
+          return record;
+        });
       }
     },
     deleteAuthor: (parent, args, context, info) => {
