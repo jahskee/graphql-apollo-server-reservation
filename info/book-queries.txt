@@ -3,35 +3,36 @@
 1. Get all
 {
   books {
-    id name age 
+    id name genre
   }
 }
 
 2. Get One
 {
-  book(id:"5c3e9517e5ec1730a8ebe404") {
-    id name age 
+  book(id:"5c3f1a93e7e2b0524f9bdd85") {
+    id name genre 
   }
 }
 
 3. Add One 
 mutation {
-  saveBook(name: "John ssss Travlota", age: 25){
-    id, name, age
+  saveBook(name: "Johny Boot", genre: "Fantasy"){
+    id, name, genre
   }
 }
 
 4. Update One
 mutation {
-  saveBook(id: "5c3f076fe4ba894ac3d5e03b", name: "John Zzz Travoolta", age: 36){
-    id, name, age
+  saveBook(id: "5c3f076fe4ba894ac3d5e03b", name: "Jimmy John", genre: "Action"){
+    id, name, genre
   }
 }
 
 5. Remove One book
 mutation {
-  removeBook(id:"5c3f0aefdeb0344c5b94b742") {
+  removeBook(id:"5c3f1b58e7e2b0524f9bdd87") {
     id
     name
+    genre
   }
 }
