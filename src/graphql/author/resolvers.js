@@ -12,8 +12,9 @@ const resolvers = {
     authors: () => Author.find({}),
   },
   Mutation: {
-    saveAuthor: mongoCRUD.save(Author),
-    removeAuthor: mongoCRUD.remove(Author),
+    // add when id is undefined, else update when id is defined
+    saveAuthor: mongoCRUD.save(Author, "Author"),
+    removeAuthor: mongoCRUD.remove(Author, "Author"),
   },
 };
 
