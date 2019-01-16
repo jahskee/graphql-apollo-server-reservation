@@ -5,16 +5,19 @@ const mongoCRUD = require('../_lib/mongoCRUD');
 
 const resolvers = {
   Author: {
+    // set graph relationship here with other records
     books: (parent, args, context, info) => Book.find({ authorId: parent.id }),
   },
   Query: {
-    author: (parent, args, context, info) => Author.findById(args.id),
-    authors: () => Author.find({}),
+    author: mongoCRUD.findOne(Author),
+    authors: mongoCRUD.findAll(Author),
+
+    // custom queries go here
   },
   Mutation: {
     // add when id is undefined, else update when id is defined
-    saveAuthor: mongoCRUD.save(Author, "Author"),
-    removeAuthor: mongoCRUD.remove(Author, "Author"),
+    saveAuthor: mongoCRUD.save(Author, 'Author'),
+    removeAuthor: mongoCRUD.remove(Author, 'Author'),
   },
 };
 

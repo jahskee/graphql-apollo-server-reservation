@@ -1,7 +1,17 @@
 const mongoCRUD = {
+  findOne,
+  findAll,
   save,
   remove,
 };
+
+function findOne(Entity) {
+  return (parent, args, context, info) => Entity.findById(args.id)
+}
+
+function findAll(Entity) {
+  return () => Entity.find({})
+}
 
 // add when id is undefined, else update when id is defined
 function save(Entity, recordName) {
