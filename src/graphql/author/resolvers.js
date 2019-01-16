@@ -1,7 +1,7 @@
 const Author = require('../../databases/mlab/collection1/author');
 const Book = require('../../databases/mlab/collection1/book');
 
-const GenericCRUD = require('../_lib/GenericCRUD');
+const mongoCRUD = require('../_lib/mongoCRUD');
 
 const resolvers = {
   Author: {
@@ -12,10 +12,8 @@ const resolvers = {
     authors: () => Author.find({}),
   },
   Mutation: {
-    saveAuthor: GenericCRUD.save(Author),
-    deleteAuthor: (parent, args, context, info) => {
-      return Author.findOneAndRemove({ _id: args.id });
-    },
+    saveAuthor: mongoCRUD.save(Author),
+    removeAuthor: mongoCRUD.remove(Author),
   },
 };
 

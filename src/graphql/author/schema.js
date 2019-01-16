@@ -15,7 +15,7 @@ const schema = gql`
 
   type Mutation {  
     saveAuthor(id: ID, name: String, age: Int): Author
-    deleteAuthor(id: ID!): Author
+    removeAuthor(id: ID!): Author
   }
 `;
 
