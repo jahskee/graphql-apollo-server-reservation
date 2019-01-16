@@ -1,28 +1,24 @@
 const Book = require('../../databases/mlab/collection1/book');
 const Author = require('../../databases/mlab/collection1/author');
 
+const mongoCRUD = require('../_lib/mongoCRUD');
+
 const resolvers = {
   Book: {
+    // set graph relationship here with other records
     author: (parent, args, context, info) => Author.findById(parent.authorId),
   },
   Query: {
-    book: (parent, args, context, info) => Book.findById(args.id),
-    books: () => Book.find({}),
+    book: mongoCRUD.findOne(Book),
+    books: mongoCRUD.findAll(Book),
+
+    // custom queries go here
   },
   Mutation: {
-    addBook: (parent, args, context, info) => {
-      let author = new Author(args);
-      return book.save();
-    },
-
-    updateBook: (parent, args, context, info) => {
-      return Book.findOneAndUpdate({_id: args.id}, args);
-    },
-
-    deleteBook: (parent, args, context, info) => {      
-      return Book.findOneAndRemove({ _id: args.id});
-    },
+    // add when id is undefined, else update when id is defined
+    saveBook: mongoCRUD.save(Book, 'Book'),
+    removeBook: mongoCRUD.remove(Book, 'Book'),
   },
-}
+};
 
 module.exports = resolvers;

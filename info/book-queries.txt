@@ -1,0 +1,37 @@
+/* ----- Book ----*/
+
+1. Get all
+{
+  books {
+    id name age 
+  }
+}
+
+2. Get One
+{
+  book(id:"5c3e9517e5ec1730a8ebe404") {
+    id name age 
+  }
+}
+
+3. Add One 
+mutation {
+  saveBook(name: "John ssss Travlota", age: 25){
+    id, name, age
+  }
+}
+
+4. Update One
+mutation {
+  saveBook(id: "5c3f076fe4ba894ac3d5e03b", name: "John Zzz Travoolta", age: 36){
+    id, name, age
+  }
+}
+
+5. Remove One book
+mutation {
+  removeBook(id:"5c3f0aefdeb0344c5b94b742") {
+    id
+    name
+  }
+}

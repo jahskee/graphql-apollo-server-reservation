@@ -1,0 +1,37 @@
+/* ----- Author ----*/
+
+1. Get all
+{
+  authors {
+    id name age 
+  }
+}
+
+2. Get One
+{
+  author(id:"5c3e9517e5ec1730a8ebe404") {
+    id name age 
+  }
+}
+
+3. Add One
+mutation {
+  saveAuthor(name: "John ssss Travlota", age: 25){
+    id, name, age
+  }
+}
+
+4. Update One
+mutation {
+  saveAuthor(id: "5c3f076fe4ba894ac3d5e03b", name: "John Zzz Travoolta", age: 36){
+    id, name, age
+  }
+}
+
+5. Remove One
+mutation {
+  removeAuthor(id:"5c3f0aefdeb0344c5b94b742") {
+    id
+    name
+  }
+}
