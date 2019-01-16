@@ -1,6 +1,6 @@
 # graphql-apollo-server-reservation
 
-### 1. Prepare Server Start
+### 1. OS Environment Variables
 
     OS Level environment variables must be set before starting the server.
     These are sensitive information that are excluded from the source code.
