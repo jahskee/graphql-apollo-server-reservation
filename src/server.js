@@ -50,7 +50,7 @@ const environment = process.env.NODE_ENV || 'production'
 const config = configurations[environment]
 
 
-// to run local plese do: export NODE_ENV='development'
+// to run local dev please do: export NODE_ENV='development'
 var server
 if (config.ssl) {
   server = https.createServer(
