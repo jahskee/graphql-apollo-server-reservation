@@ -1,0 +1,36 @@
+/* ----- Book ----*/
+
+1. Get all
+{
+  cities {
+    id city state
+  }
+}
+
+2. Get One
+{
+  city(id:"5c3f1a93e7e2b0524f9bdd85") {
+    id city state
+  }
+}
+
+3. Add One 
+mutation {
+  saveCity(
+          city: "New York", state: "New York")
+    { id city state }
+}
+
+4. Update One
+mutation {
+  saveCity(id: "5c3f076fe4ba894ac3d5e03b", city: "Los Angeles", state: "Virginia"){
+      id city state
+  }
+}
+
+5. Remove One
+mutation {
+  removeCity(id:"5c3f1b58e7e2b0524f9bdd87") {
+      id city state
+  }
+}

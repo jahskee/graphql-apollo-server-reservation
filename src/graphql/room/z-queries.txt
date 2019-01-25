@@ -1,0 +1,36 @@
+/* ----- Book ----*/
+
+1. Get all
+{
+  rooms {
+    id roomNo type price description pax image isOccupied
+  }
+}
+
+2. Get One
+{
+ room(id:"5c3f1a93e7e2b0524f9bdd85") {
+    id roomNo type price description pax image isOccupied
+  }
+}
+
+3. Add One 
+mutation {
+  saveRoom(roomNo: "102", type: "Twin Bed", price: 102.00, description:  "Test", pax: 4, image: "Test", isOccupied: false){
+     id roomNo type price description pax image isOccupied
+  }
+}
+
+4. Update One
+mutation {
+  saveRoom(id: "5c3f076fe4ba894ac3d5e03b", description: "Jimmy John", genre: "Action"){
+    id roomNo type price description pax image isOccupied
+  }
+}
+
+5. Remove One
+mutation {
+  removeRoom(id:"5c3f1b58e7e2b0524f9bdd87") {
+    id roomNo type price description pax image isOccupied
+  }
+}

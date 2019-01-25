@@ -1,0 +1,37 @@
+/* ----- Book ----*/
+
+1. Get all
+{
+  reservations {
+    id name phone email hotel address arrival departure totalAmount
+  }
+}
+
+2. Get One
+{
+  reservation(id:"5c3f1a93e7e2b0524f9bdd85") {
+       id name phone email hotel address arrival departure totalAmount
+  }
+}
+
+3. Add One 
+mutation {
+  saveReservation(
+          name: "Jaizon Lubaton", phone: "54122222222", email: "jahs@yahoo.com", address: "Alexandria, VA",
+          arrival: "Jan 25 2019", departure: "Jan 28 2019", totalAmount: 145
+  ){ id name phone email hotel address arrival departure totalAmount }
+}
+
+4. Update One
+mutation {
+  saveReservation(id: "5c3f076fe4ba894ac3d5e03b",name: "Jaizon Lubaton", phone: "54122222222", email: "jahs@yahoo.com"){
+       id name phone email hotel address arrival departure totalAmount
+  }
+}
+
+5. Remove One
+mutation {
+  removeReservation(id:"5c3f1b58e7e2b0524f9bdd87") {
+      id name phone email hotel address arrival departure totalAmount
+  }
+}

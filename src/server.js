@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const https = require('https');
 const http = require('http');
+const cors = require('cors');
+
 
 
 /* connect to mongodb database */
@@ -16,13 +18,15 @@ mongoose.connection.once('open',() => {
 });
 
 /* imported schemas and resolvers */
-const book = require('./graphql/book');
-const author = require('./graphql/author');
+const room = require('./graphql/room');
+const hotel = require('./graphql/hotel');
+const city = require('./graphql/city');
+const reservation = require('./graphql/reservation');
 
 
 /* merge schema and resolver files */
-const typeDefs = mergeTypes([book.schema, author.schema]);
-const resolvers = merge(book.resolvers, author.resolvers);
+const typeDefs = mergeTypes([room.schema, hotel.schema, city.schema, reservation.schema]);
+const resolvers = merge(room.resolvers, hotel.resolvers, city.resolvers, reservation.resolvers);
 
 const apollo = new ApolloServer({ typeDefs, resolvers })
 
@@ -36,6 +40,13 @@ const environment = process.env.NODE_ENV || 'production'
 const config = configurations[environment]
 
 const app = express()
+app.use(cors());
+
+// setup routes
+const apiReservations = require("./rest/routes/api-reservations");
+app.use("/rest/api", apiReservations);
+
+
 apollo.applyMiddleware({ app })
 
 // to run local plese do: export NODE_ENV='development'

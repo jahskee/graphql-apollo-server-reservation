@@ -1,0 +1,37 @@
+/* ----- Book ----*/
+
+1. Get all
+{
+  hotels {
+    id name address distance price image cityId
+  }
+}
+
+2. Get One
+{
+  hotel(id:"5c3f1a93e7e2b0524f9bdd85") {
+      id name address distance price image cityId
+  }
+}
+
+3. Add One 
+mutation {
+  saveHotel(
+          name: "Hilton Los Angeles Airport", address: "5711 W Century Blvd, Los Angeles, CA 90041 US", distance: 1.0, price: 110.5,
+          image:"https://cdn2.iconfinder.com/data/icons/fitness-achievement-badges/64/Fitness-14-512.png"
+  ){id name address distance price image, cityId}
+}
+
+4. Update One
+mutation {
+  saveHotel(id: "5c3f076fe4ba894ac3d5e03b", name: "Jimmy Johns", address: "Richmond Hwy, Virginia"){
+      id name address distance price image cityId
+  }
+}
+
+5. Remove One
+mutation {
+  removeHotel(id:"5c3f1b58e7e2b0524f9bdd87") {
+     id name address distance price image cityId
+  }
+}
