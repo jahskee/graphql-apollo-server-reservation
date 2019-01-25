@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 
-const reservationController = require('../controllers/reservationController')
+const reservationController = require('./reservation-controller')
 
 // custom searches
 router.get('/reservations', reservationController.searchReservations);

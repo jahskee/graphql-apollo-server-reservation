@@ -17,7 +17,10 @@ mongoose.connection.once('open',() => {
     console.log(`connected to database`);
 });
 
-/* imported schemas and resolvers */
+const app = express()
+app.use(cors());
+
+/* ====== GraphQL Start ===== */
 const room = require('./graphql/room');
 const hotel = require('./graphql/hotel');
 const city = require('./graphql/city');
@@ -29,6 +32,13 @@ const typeDefs = mergeTypes([room.schema, hotel.schema, city.schema, reservation
 const resolvers = merge(room.resolvers, hotel.resolvers, city.resolvers, reservation.resolvers);
 
 const apollo = new ApolloServer({ typeDefs, resolvers })
+apollo.applyMiddleware({ app })
+/* ====== GraphQL End ===== */
+
+/* ====== REST API - Start ========*/
+const apiReservations = require("./rest/reservation/reservation-routes");
+app.use("/rest/api", apiReservations);
+/* ====== REST API - End ========*/
 
 
 const configurations = {
@@ -39,15 +49,6 @@ const configurations = {
 const environment = process.env.NODE_ENV || 'production'
 const config = configurations[environment]
 
-const app = express()
-app.use(cors());
-
-// setup routes
-const apiReservations = require("./rest/routes/api-reservations");
-app.use("/rest/api", apiReservations);
-
-
-apollo.applyMiddleware({ app })
 
 // to run local plese do: export NODE_ENV='development'
 var server
